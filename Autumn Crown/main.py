@@ -50,12 +50,37 @@ while running:
     # Dibujar la imagen de fondo
     screen.blit(image, (-50,-50))
     
+    
     # Dibujar textos
     dibujar_título("Autumn Crown", font, TEXT_COL, 180, 80)
-    dibujar_texto("• Iniciar juego", font, TEXT_COL, 210, 245)
+    dibujar_texto("• Jugar", font, TEXT_COL, 210, 245)
     dibujar_texto("• Puntuaciones", font, TEXT_COL, 210, 300)
     dibujar_texto("• Opciones", font, TEXT_COL, 210, 350)
     dibujar_texto("• Salir del juego", font, TEXT_COL, 210, 400)
+    class boton():
+        def __init__(self,imagen,pos,texto,font,color_base,color_flo):
+            self.imagen = imagen 
+            self.x_pos = pos[0]
+            self.y_pos = pos[1]
+            self.color_base, self.color_flo = color_base , color_flo
+            self.texto = texto
+            self.texto = self.font.render(self.texto, True, self.color_base)
+            if self.imagen is None:
+                self.imagen = self.texto
+                self.rect = self.imagen.get_rect(centro=(self.x_pos, self.y_pos))
+                self.texto_rect = self.texto.get_rect(centro=(self.x_pos, self.y_pos))
+        def actualizaar(self,pantalla):
+            if self.imagen is not None:
+                pantalla.blit(self.imagen)
+        
+    def jugar():
+        pygame.display.set_caption("jugar")
+        while True:
+            
+            menus_con_mouse = pygame.mouse.get_pos
+            screen.fill("black")
+            jugar_texto = get_font(45).render(True)
+
 
     # Limita los FPS a 60
     pygame.time.Clock().tick(60)
