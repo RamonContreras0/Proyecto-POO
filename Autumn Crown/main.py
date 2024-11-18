@@ -71,7 +71,17 @@ while running:
                 self.texto_rect = self.texto.get_rect(centro=(self.x_pos, self.y_pos))
         def actualizaar(self,pantalla):
             if self.imagen is not None:
-                pantalla.blit(self.imagen)
+                pantalla.blit(self.imagen, self.rect)
+            pantalla.blit(self.texto, self.texto_rect)
+        def inputrevisado(self,posicion):
+            if posicion[0] in range(self.rect.left, self.rect.right) and posicion[1] in range(self.rect.top, self.rect.boton):
+                return True
+            return False
+        def cambiarcolor(self,posicion):
+            if posicion[0] in range (self.rect.left, self.rect.right) and posicion[1] in range(self.rect.top, self.rect.boton):
+                self.texto = self.font.render(self.texto_input, True, self.color_flo)
+            else:
+                self.texto = self.font.render(self.texto_input, True, self.color_base)
         
     def jugar():
         pygame.display.set_caption("jugar")
@@ -80,6 +90,16 @@ while running:
             menus_con_mouse = pygame.mouse.get_pos
             screen.fill("black")
             jugar_texto = get_font(45).render(True)
+    def jugar():
+        pygame.display.set_caption("Menu")
+        while True:
+            
+            menu_con_mouse = pygame.mouse.get_pos()
+            texto_menu = get_font(100).render("Menu", True,"#b68f40")
+            rect_menu = texto_menu.get_rect(centro =(640, 100))
+            
+            boton_jugar = boton(imagen=pygame.image.load("assets/play rect.png"),pos=(640, 250),
+                                ) 
 
 
     # Limita los FPS a 60
