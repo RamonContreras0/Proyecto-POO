@@ -24,7 +24,7 @@ def dibujar_texto(text, font, text_col, x, y):
     screen.blit(img, (x, y))
 
 # Icono del juego
-icon = pygame.image.load('Autumn Crown/icon/icon.ico')
+icon = pygame.image.load('Autumn Crown/icon.ico')
 pygame.display.set_icon(icon)
 #pygame.display.iconfy():
 #pygame.set_gamma():
@@ -49,7 +49,7 @@ while running:
 
     # Dibujar la imagen de fondo
     screen.blit(image, (-50,-50))
-    
+
     
     # Dibujar textos
     dibujar_título("Autumn Crown", font, TEXT_COL, 180, 80)
@@ -77,8 +77,8 @@ while running:
             if posicion[0] in range(self.rect.left, self.rect.right) and posicion[1] in range(self.rect.top, self.rect.boton):
                 return True
             return False
-        def cambiarcolor(self,posicion):
-            if posicion[0] in range (self.rect.left, self.rect.right) and posicion[1] in range(self.rect.top, self.rect.boton):
+        def cambiarcolor(self,position):
+            if position[0] in range (self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.boton):
                 self.texto = self.font.render(self.texto_input, True, self.color_flo)
             else:
                 self.texto = self.font.render(self.texto_input, True, self.color_base)
@@ -90,7 +90,7 @@ while running:
             menus_con_mouse = pygame.mouse.get_pos
             screen.fill("black")
             jugar_texto = get_font(45).render(True)
-    def jugar():
+    def jugar(self,color):
         pygame.display.set_caption("Menu")
         while True:
             
